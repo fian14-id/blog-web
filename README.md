@@ -1,2 +1,4 @@
 # blog-web
-no description
+## Halo👋 yang dari Tele
+Lif, 19 - Hobi ngoding
+github: fian14-id
