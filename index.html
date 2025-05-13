@@ -1,169 +1,586 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV - Mochamad Allifian Ar'Rasyid</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="https://fianity.com/favicon.ico" />
+    <title>Allifian | Front-End Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+              publicKey: "C720Wqd5WeR6-k83O",
+            });
+        })();
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('service_z7eemzc', 'template_fntrlas', this)
+                    .then(() => {
+                        console.log('SUCCESS!');
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
     <style>
-      body {
-        font-family: "Poppins", serif;
-      }
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #111827;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #65b0b7;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .animate-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #65b0b7, #8B5CF6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        nav {
+            transition: all 0.3s ease;
+        }
+        .nav-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
     </style>
-  </head>
-  <body>
-    <section class="w-full p-4 lg:px-96">
-      <header class="text-center">
-        <h1 class="font-semibold text-2xl">Mochamad Allifian Ar'rasyid</h1>
-        <ul class="flex justify-center gap-2 text-sm font-normal">
-          <li>
-            <a href="mailto:allifian051@gmail.com">allifian051@gmail.com</a>
-          </li>
-          <li><a href="tel:+6281331954019">+62 813-3195-4019</a></li>
-          <li>Jombang, Jawa Timur</li>
-        </ul>
-      </header>
-      <main class="mt-2">
-        <h2 class="font-semibold text-xl border-b-2 border-b-black text-center">
-          Ringkasan
-        </h2>
-        <p class="text-justify text-sm font-normal">
-          Dengan pengalaman 1,5 tahun sebagai Kasir CPC (Cash Processing
-          Center), saya memiliki keahlian dalam penyortiran uang, penghitungan
-          uang, serta pengisian uang ke dalam kaset ATM. Saya siap ditempatkan
-          di area Surabaya, Semarang, atau Denpasar sesuai kebutuhan perusahaan.
-          Keterampilan saya dalam bekerja secara teliti, disiplin, dan bekerja
-          sama dengan tim menjadikan saya kandidat yang tepat untuk mendukung
-          kelancaran operasional perusahaan.
-        </p>
-      </main>
-      <main class="mt-2">
-        <h2 class="font-semibold text-xl border-b-2 border-b-black text-center">
-          Pengalaman Kerja
-        </h2>
-        <article>
-          <section class="flex justify-between font-medium">
-            <h3 class="text-md">
-              Cash Processing Center (Kontrak) - PT Advantage SCM
-            </h3>
-            <div class="flex gap-2 text-sm">
-              <time class="text-justify text-sm font-normal" datetime="2023-3"
-                >Maret 2023</time
-              >
-              <span>-</span>
-              <time class="text-justify text-sm font-normal" datetime="2024-10"
-                >Oktober 2024</time
-              >
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Splash Screen -->
+    <div class="splash-screen">
+        <div class="loader mb-4"></div>
+        <h1 class="text-white text-2xl font-bold">Loading Portfolio...</h1>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-gradient">Allifian</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-[#65b0b7] transition">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-[#65b0b7] transition">About</a>
+                    <a href="#projects" class="text-gray-700 hover:text-[#65b0b7] transition">Projects</a>
+                    <a href="#skills" class="text-gray-700 hover:text-[#65b0b7] transition">Skills</a>
+                    <a href="#contact" class="text-gray-700 hover:text-[#65b0b7] transition">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-2xl text-gray-700"></i>
+                </button>
             </div>
-          </section>
-          <ul class="mt-2 list-disc px-6 text-justify">
-            <li>
-              Melakukan penyortiran uang, termasuk denom, uang palsu, uang layak
-              edar dan uang tidak layak edar.
-            </li>
-            <li>
-              Berkolaborasi dengan tim untuk melakukan penghitungan uang 4000
-              lembar ke kaset ATM dan pengisian uang ke kaset ATM dengan kisaran
-              target harian 35-45 lokasi.
-            </li>
-            <li>
-              Mempersiapkan laporan total uang dari ATM dengan akurasi tinggi
-              dan mempersiapkan data untuk pengiriman uang.
-            </li>
-            <li>
-              Merawat dan memastikan mesin hitung uang dalam kondisi yang
-              optimal untuk mendukung operasional harian.
-            </li>
-          </ul>
-        </article>
-        <article>
-          <section class="flex justify-between font-medium mt-2">
-            <h3 class="text-md">
-              Digital Marketing (Magang) - PT Imersa Solusi Teknologi
-            </h3>
-            <div class="flex gap-2 text-sm">
-              <time class="text-justify text-sm font-normal" datetime="2022-1"
-                >Januari 2022</time
-              >
-              <span>-</span>
-              <time class="text-justify text-sm font-normal" datetime="2022-3"
-                >Maret 2022</time
-              >
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-4 animate-section">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Hi, I'm <span class="text-gradient">Allifian</span></h1>
+            <h2 class="text-2xl md:text-3xl text-gray-600 mb-8">Front-End Developer & UI Enthusiast</h2>
+            <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-12">
+                I create beautiful, responsive, and user-friendly web experiences with modern technologies.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="#projects" class="bg-[#65b0b7] hover:bg-[#65b0b7]/50 text-white px-6 py-3 rounded-lg font-medium transition shadow-lg">
+                    View My Work
+                </a>
+                <a href="#contact" class="border-2 border-[#65b0b7] text-[#65b0b7] hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition">
+                    Contact Me
+                </a>
             </div>
-          </section>
-          <ul class="mt-2 list-disc px-6 text-justify">
-            <li>
-              Mengiklankan ke berbagai media sosial dan platform website untuk
-              meningkatkan visibilitas produk sebesar 5% dan menjangkau basis
-              pelanggan yang lebih luas.
-            </li>
-            <li>
-              Konsisten terhadap unggahan konten agar pelanggan ingat akan
-              produk yang diiklankan.
-            </li>
-          </ul>
-        </article>
-      </main>
-      <main class="mt-2">
-        <h2 class="font-semibold text-xl border-b-2 border-b-black text-center">
-          Pendidikan
-        </h2>
-        <article>
-          <section class="flex justify-between font-medium">
-            <h3 class="text-md">
-              SMK Negeri Mojoagung - Rekayasa Perangkat Lunak
-            </h3>
-            <div class="flex gap-2 text-sm">
-              <time class="text-justify text-sm font-normal" datetime="2020-6"
-                >Juni 2020</time
-              >
-              <span>-</span>
-              <time class="text-justify text-sm font-normal" datetime="2023-5"
-                >Mei 2023</time
-              >
-            </div>
-          </section>
-          <ul class="mt-2 list-disc px-6 text-justify">
-            <li>
-              Mempelajari dasar pengembangan web, desain antarmuka pengguna, dan
-              pemecahan masalah.
-            </li>
-            <li>
-              Membuat proyek web app pembayaran SPP berbasis laravel dan membuat
-              software perpustakaan berbasis java.
-            </li>
-          </ul>
-        </article>
-      </main>
-      <main class="mt-2">
-        <h2 class="font-semibold text-xl border-b-2 border-b-black text-center">
-          Keterampilan
-        </h2>
-        <table>
-          <tbody>
-            <tr>
-              <td class="text-start">Keterampilan Teknis&nbsp;</td>
-              <td>
-                : Pengoperasian mesin hitung uang, Microsoft Office (Word),
-                penginputan data
-              </td>
-            </tr>
-            <tr>
-              <td class="text-start">Interpersonal&nbsp;</td>
-              <td>
-                : Adaptasi, komunikasi efektif, kerja sama tim, detail, teliti,
-                dan disiplin.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </main>
+        </div>
     </section>
-  </body>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 bg-gray-100 animate-section">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">About <span class="text-gradient">Me</span></h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3 flex justify-center">
+                    <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                        <img src="https://media.licdn.com/dms/image/v2/D5635AQG2I-XBVv8HUQ/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1729220642691?e=1747742400&v=beta&t=P7-hRJcykUAVCluBkhGn9ICo3sOEfu4zcjfxXTxWtis" 
+                             alt="Allifian" class="w-full h-full object-cover" />
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <h3 class="text-2xl font-bold mb-4">Who am I?</h3>
+                    <p class="text-gray-600 mb-6">
+                        I'm Allifian, a passionate front-end developer with a love for creating intuitive and visually appealing web interfaces. 
+                        With a strong foundation in HTML, CSS, and JavaScript, I specialize in building responsive websites and web applications 
+                        that deliver exceptional user experiences.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, 
+                        or enjoying a good cup of coffee while brainstorming my next project.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <i class="fas fa-code text-[#65b0b7] mr-2"></i>
+                            <span>Front-End Development</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <i class="fas fa-mobile-alt text-[#65b0b7] mr-2"></i>
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                            <i class="fas fa-paint-brush text-[#65b0b7] mr-2"></i>
+                            <span>UI/UX Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 animate-section">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My <span class="text-gradient">Projects</span></h2>
+            <p class="text-gray-500 text-center mb-16 max-w-2xl mx-auto">
+                Here are some of my recent projects that showcase my skills and expertise.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://nexanime.fianity.com/images/nexanime-img.png" 
+                             alt="Project 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Nexanime</h3>
+                        <p class="text-gray-600 mb-4">
+                            A fully responsive e-commerce platform built with React and TailwindCSS.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Next.js</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">TailwindCSS</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">MyAnimeList API</span>
+                        </div>
+                        <a href="https://nexanime.fianity.com" class="text-[#65b0b7] font-medium hover:text-blue-700 flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <!-- <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1636&q=80" 
+                             alt="Project 2" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Portfolio Template</h3>
+                        <p class="text-gray-600 mb-4">
+                            A modern portfolio template with smooth animations and clean design.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">HTML</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">CSS</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">JavaScript</span>
+                        </div>
+                        <a href="#" class="text-[#65b0b7] font-medium hover:text-blue-700 flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div> -->
+                
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://opengraph.b-cdn.net/production/images/7bd857d5-7d14-4fd7-a7aa-4ad3132c24a4.png?token=h3St0y7M0ugZS6FDpkGqvhNyx_HoZ1APMPDyG_tbshk&height=500&width=1200&expires=33283021110" 
+                             alt="Project 3" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Barcode Realtime</h3>
+                        <p class="text-gray-600 mb-4">
+                            Barcode Realtime Generator, instant create barcode without enter key or submit button.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">React.js</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">TailwindCSS</span>
+                        </div>
+                        <a href="https://barcode.fianity.com" class="text-[#65b0b7] font-medium hover:text-blue-700 flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://github.com/fian14-id" class="inline-flex items-center px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
+                    <i class="fab fa-github mr-2"></i> View More on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-gray-100 animate-section">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">My <span class="text-gradient">Skills</span></h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <!-- Skill 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-100 rounded-full">
+                        <i class="fab fa-html5 text-3xl text-orange-500"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">HTML5</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-orange-500 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-100 rounded-full">
+                        <i class="fab fa-css3-alt text-3xl text-[#65b0b7]"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">CSS3</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-[#65b0b7] h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-100 rounded-full">
+                        <i class="fab fa-js text-3xl text yellow-500"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">JavaScript</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-100 rounded-full">
+                        <i class="fab fa-react text-3xl text-blue-400"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">React</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-400 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 5 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-100 rounded-full">
+                        <i class="fab fa-vuejs text-3xl text-green-500"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Vue.js</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 6 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-100 rounded-full">
+                        <i class="fab fa-node-js text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Node.js</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-green-600 h-2 rounded-full" style="width: 70%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 7 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-100 rounded-full">
+                        <i class="fas fa-database text-3xl text-[#65b0b7]/50"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">MongoDB</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-[#65b0b7]/50 h-2 rounded-full" style="width: 65%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 8 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-100 rounded-full">
+                        <i class="fab fa-git-alt text-3xl text-orange-600"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Git</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-orange-600 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 9 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-100 rounded-full">
+                        <i class="fas fa-paint-brush text-3xl text-purple-500"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">UI/UX</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-purple-500 h-2 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <!-- Skill 10 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-blue-100 rounded-full">
+                        <i class="fas fa-mobile-alt text-3xl text-[#65b0b7]"></i>
+                    </div>
+                    <h3 class="font-bold mb-2">Responsive</h3>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div class="bg-[#65b0b7] h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 animate-section">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Get In <span class="text-gradient">Touch</span></h2>
+            <p class="text-gray-500 text-center mb-16 max-w-2xl mx-auto">
+                Have a project in mind or want to collaborate? Feel free to reach out!
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <form class="space-y-6" id="contact-form">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#65b0b7]">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#65b0b7]">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                            <textarea id="message" rows="5" name="message" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#65b0b7]"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-[#65b0b7] hover:bg-[#65b0b7]/50 text-white px-6 py-3 rounded-lg font-medium transition shadow-lg">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-gray-100 p-8 rounded-xl h-full">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-[#65b0b7]"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-700">Email</h4>
+                                    <p class="text-gray-600">mail@allifian.me</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-[#65b0b7]"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-700">Phone</h4>
+                                    <p class="text-gray-600">+62 851 9007 0283</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-[#65b0b7]"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-700">Location</h4>
+                                    <p class="text-gray-600">Jombang, Indonesia</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-medium text-gray-700 mb-4">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/fian14-id" class="bg-blue-100 p-3 rounded-full text-[#65b0b7] hover:bg-[#65b0b7] hover:text-white transition">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/allifian" class="bg-blue-100 p-3 rounded-full text-[#65b0b7] hover:bg-[#65b0b7] hover:text-white transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://instagram.com/fianity_id" class="bg-blue-100 p-3 rounded-full text-[#65b0b7] hover:bg-[#65b0b7] hover:text-white transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-gradient">Allifian</a>
+                    <p class="text-gray-400 mt-2">Front-End Developer & UI Enthusiast</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Allifian. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // SweetAlert2 for form submission success
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            Swal.fire({
+                icon: 'success',
+                title: 'Message Sent!',
+                text: 'Thank you for reaching out. I will get back to you soon.',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Splash screen animation
+            gsap.to(".splash-screen", {
+                opacity: 0,
+                duration: 0.5,
+                delay: 2,
+                onComplete: function() {
+                    document.querySelector('.splash-screen').style.display = 'none';
+                }
+            });
+            
+            // Initialize scroll animations
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animate sections on scroll
+            const animateSections = document.querySelectorAll('.animate-section');
+            
+            animateSections.forEach(section => {
+                gsap.fromTo(section, 
+                    { opacity: 0, y: 50 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 80%",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                );
+            });
+            
+            // Navigation scroll effect
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('nav-scrolled');
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Mobile menu toggle (if you want to implement it)
+            const mobileMenuButton = document.querySelector('button.md\\:hidden');
+            mobileMenuButton.addEventListener('click', function() {
+                const menu = document.querySelector('.hidden.md\\:flex');
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+                menu.classList.toggle('flex-col');
+                menu.classList.toggle('absolute');
+                menu.classList.toggle('top-16');
+                menu.classList.toggle('left-0');
+                menu.classList.toggle('w-full');
+                menu.classList.toggle('bg-white');
+                menu.classList.toggle('p-4');
+                menu.classList.toggle('shadow-md');
+            });
+        });
+    </script>
+</body>
 </html>
